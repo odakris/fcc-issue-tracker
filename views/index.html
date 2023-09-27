@@ -1,115 +1,156 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <title>Issue Tracker</title>
     <link rel="icon" type="image/png" href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png" />
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/public/style.css">
-  </head>
-  <body>
-    <header>
-      <h1>
-        Issue Tracker
-      </h1>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./public/style.css" />
+</head>
+
+<body class="flex">
+    <header class="titles">
+        <h1>Issue Tracker</h1>
+        <p class="subtitle">An issue tracking system is used to take in newly reported problems with your software and
+            mark them as complete once they're resolved.</p>
+        <p class="subtitle">Go to
+            <a href="/api/issues/apitest/">/api/issues/apitest/</a>
+            project fro some examples
+        </p>
     </header>
-    <section style="margin: 0 50px;">
-      <h3>Example <code>GET</code> usage</h3>
-      <code>/api/issues/{project}</code><br>
-      <code>/api/issues/{project}?open=true&amp;assigned_to=Joe</code><br>
-      <h3>Example return</h3>
-      <pre>
-<code>[
-  { 
-    "_id": "5871dda29faedc3491ff93bb",
-    "issue_title": "Fix error in posting data",
-    "issue_text": "When we post data it has an error.",
-    "created_on": "2017-01-08T06:35:14.240Z",
-    "updated_on": "2017-01-08T06:35:14.240Z",
-    "created_by": "Joe",
-    "assigned_to": "Joe",
-    "open": true,
-    "status_text": "In QA"
-  },
-  ...
- ]
-</code>
-</pre>
+
+    <section id="testui" class="testui-container">
+        <hr />
+        <div id="forms" class="flex-row flex wrap">
+
+            <div id="submit-issue">
+                <h3>Submit issue on <i>apitest</i></h3>
+                <form id="testForm">
+                    <input type="text" name="issue_title" placeholder="*Title" required />
+                    <input type="text" name="issue_text" placeholder="*Text" required>
+                    <input type="text" name="created_by" placeholder="*Created by" required />
+                    <input type="text" name="assigned_to" placeholder="Assigned to" />
+                    <input type="text" name="status_text" placeholder="Status text" />
+                    <input type="submit" value="Submit Issue">
+                </form>
+            </div>
+
+            <div id="update-issue">
+                <h3>Update issue on <i>apitest</i></h3>
+                <form id="testForm2">
+                    <input type="text" name="_id" placeholder="*_id" required />
+                    <input type="text" name="issue_title" placeholder="Title" />
+                    <input type="text" name="issue_text" placeholder="Text">
+                    <input type="text" name="created_by" placeholder="Created by" />
+                    <input type="text" name="assigned_to" placeholder="Assigned to" />
+                    <input type="text" name="status_text" placeholder="Status text" />
+                    <label><input type="checkbox" name="open" value="false" />
+                        Check to close issue
+                    </label>
+                    <input type="submit" value="Submit Issue">
+                </form>
+            </div>
+
+            <div id="delete-issue">
+                <h3>Delete issue on <i>apitest</i></h3>
+                <form id="testForm3">
+                    <input type="text" name="_id" placeholder="*_id" required />
+                    <input type="submit" value="Delete Issue">
+                </form>
+            </div>
+
+        </div>
+        <div id="display" class="display flex">
+            <code id="jsonResult" class="display"></code>
+        </div>
+
+        <hr />
     </section>
-    <hr style='margin: 0 50px'>
-    <section id='testui' style='margin-left: 50px;'>
-      <h3>Examples</h3>
-      Go to <a href='/api/issues/apitest/'><code>/api/issues/apitest/</code></a>  project
-      <h2 style="text-align: left">API Tests</h2>
-      <h3>Submit issue on <i>apitest</i></h3>
-      <form id="testForm" class="border">
-        <input type="text" name="issue_title" placeholder="*Title" style="width: 100px" required=''><br>
-        <textarea type="text" name="issue_text" placeholder="*Text" style="width: 100px" required=''></textarea><br>
-        <input type="text" name="created_by" placeholder="*Created by" style="width: 100px" required=''><br>
-        <input type="text" name="assigned_to" placeholder="(opt)Assigned to" style="width: 100px"><br>
-        <input type="text" name="status_text" placeholder="(opt)Status text" style="width: 100px"><br>
-        <button type="submit">Submit Issue</button>
-      </form><br>
-      <h3>Update issue on <i>apitest</i> (Change any or all to update issue on the _id supplied)</h3>
-      <form id="testForm2" class="border">
-        <input type="text" name="_id" placeholder="*_id" style="width: 100px" required=''><br>
-        <input type="text" name="issue_title" placeholder="(opt)Title" style="width: 100px"><br>
-        <textarea type="text" name="issue_text" placeholder="(opt)Text" style="width: 100px"></textarea><br>
-        <input type="text" name="created_by" placeholder="(opt)Created by" style="width: 100px"><br>
-        <input type="text" name="assigned_to" placeholder="(opt)Assigned to" style="width: 100px"><br>
-        <input type="text" name="status_text" placeholder="(opt)Status text" style="width: 100px"><br>
-        <label><input type="checkbox" name="open" value="false"> Check to close issue</label><br>
-        <button type="submit">Submit Issue</button>
-      </form><br>
-      <h3>Delete issue on <i>apitest</i></h3>
-      <form id="testForm3" class="border">
-        <input type="text" name="_id" placeholder="_id" style="width: 100px" required=''><br>
-        <button type="submit">Delete Issue</button>
-      </form>
-      <code id='jsonResult'></code>
+
+    <section id="usage" class="usage flex">
+        <h1>Usage</h1>
+        <p class="text">From this page it is possible to add an issue, update an issue and delete an issue on
+            <i>apitest</i> project.
+        </p>
+
+        <h3>GET request to issue page</h3>
+        <p class="text">Sending a GET request to the following will redirect to the 'project' issue page where new
+            issues can be upload. All submitted issues will be displayed with all provided informations. Issues can be
+            deleted or set status to closed.</p>
+        <code>[your_url]/{project_name}</code>
+        <h3>GET request on a project usage</h3>
+        <p class="text">A Get request on a project like: </p>
+        <code>[your_url]/api/issues/{project_name}</code>
+        <p class="text">will return a json will all requests. Proving query to the url request will filter the response,
+            for example:</p>
+        <code>[your_url]/api/issues/{project_name}?open=true&amp;assigned_to=Joe</code><br />
+        <h3>Example return</h3>
+
+        <code>[
+    { 
+      "_id": "5871dda29faedc3491ff93bb",
+      "issue_title": "Fix error in posting data",
+      "issue_text": "When we post data it has an error.",
+      "created_on": "2017-01-08T06:35:14.240Z",
+      "updated_on": "2017-01-08T06:35:14.240Z",
+      "created_by": "Joe",
+      "assigned_to": "Joe",
+      "open": true,
+      "status_text": "In QA"
+    },
+    ...
+]</code>
+
     </section>
-    <hr style='margin: 50px; margin-top: 200px'>
+
+    <section class="footer">
+        Created by
+        <a href="https://github.com/odakris?tab=repositories" target="_blank">odakris</a>
+        </p>
+    </section>
+
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
+        integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
     <script>
-      $(function() {
-        $('#testForm').submit(function(e) {
-          $.ajax({
-            url: '/api/issues/apitest',
-            type: 'post',
-            data: $('#testForm').serialize(),
-            success: function(data) {
-              $('#jsonResult').text(JSON.stringify(data));
-            }
-          });
-          e.preventDefault();
+        $(function () {
+            $("#testForm").submit(function (e) {
+                $.ajax({
+                    url: "/api/issues/apitest",
+                    type: "post",
+                    data: $("#testForm").serialize(),
+                    success: function (data) {
+                        $("#jsonResult").text(JSON.stringify(data));
+                    },
+                });
+                e.preventDefault();
+            });
+            $("#testForm2").submit(function (e) {
+                $.ajax({
+                    url: "/api/issues/apitest",
+                    type: "put",
+                    data: $("#testForm2").serialize(),
+                    success: function (data) {
+                        $("#jsonResult").text(JSON.stringify(data));
+                    },
+                });
+                e.preventDefault();
+            });
+            $("#testForm3").submit(function (e) {
+                $.ajax({
+                    url: "/api/issues/apitest",
+                    type: "delete",
+                    data: $("#testForm3").serialize(),
+                    success: function (data) {
+                        $("#jsonResult").text(JSON.stringify(data));
+                    },
+                });
+                e.preventDefault();
+            });
         });
-        $('#testForm2').submit(function(e) {
-          $.ajax({
-            url: '/api/issues/apitest',
-            type: 'put',
-            data: $('#testForm2').serialize(),
-            success: function(data) {
-              $('#jsonResult').text(JSON.stringify(data));
-            }
-          });
-          e.preventDefault();
-        });
-        $('#testForm3').submit(function(e) {
-          $.ajax({
-            url: '/api/issues/apitest',
-            type: 'delete',
-            data: $('#testForm3').serialize(),
-            success: function(data) {
-              $('#jsonResult').text(JSON.stringify(data));
-            }
-          });
-          e.preventDefault();
-        });
-      });
-   </script>
-  </body>
+    </script>
+</body>
+
 </html>

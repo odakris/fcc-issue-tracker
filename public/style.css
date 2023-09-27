@@ -1,23 +1,233 @@
+/* GLOBAL STYLES */
 * {
-  margin: 0px;
-  padding: 0px;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+    margin: 0px;
+    padding: 0px;
+    font-family: arial;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.wrap {
+    flex-wrap: wrap;
 }
 
 body {
-  padding: 10px;
+    padding: 10px;
+    color: linen;
+    background-color: #003c58;
+}
+
+.testui-container {
+    max-width: 1080px;
+}
+
+.text {
+    text-align: justify;
+    width: 90%;
+    margin: 3px;
+    padding: 5px;
+    line-height: 25px;
+}
+
+.subtitle {
+    margin: 20px;
+}
+
+hr {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.titles {
+    text-align: center;
+}
+
+h2,
+h3 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+input[type=checkbox] {
+    height: 18px;
+    width: 18px;
+    flex: none;
+    margin: 0 10px;
+}
+
+form {
+    padding: 25px;
+    margin: 20px 30px;
+    background-color: #1c5a77;
+    display: inline-block;
+    min-width: 300px;
+    border-radius: 10px;
+    border: 2px solid linen;
+}
+
+input {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #e4f1fe;
+    border: 1px solid grey;
+    box-shadow: 2px 2px #999;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #fffec4;
+}
+
+.usage {
+    max-width: 900px;
+}
+
+.usage h3 {
+    width: 100%;
+    text-align: left;
+    padding-left: 15px;
+}
+
+code {
+    text-align: left;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    color: #003c58;
+    background-color: linen;
+    min-width: 94%;
+    white-space: break-spaces;
+    word-break: break-all;
+}
+
+.display {
+    min-height: 75px;
+}
+
+/* 
+#jsonResult {
+  min-height: 75px;
+} */
+
+/* INDEX STYLES */
+label {
+    display: flex;
+    margin: 10px;
+    color: linen;
+}
+
+/* ISSUE STYLE */
+.container {
+    width: 70%;
+    font-style: 1rem;
+}
+
+.issueDisplay {
+    width: 100%;
+}
+
+.issue-title {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    margin: 5px 10px 10px 10px;
+}
+
+.new-issue {
+    width: 450px;
+}
+
+textarea {
+    font-size: 1rem;
+    width: 395px;
+    height: 100px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+    resize: none;
+
 }
 
 .issue {
-  margin: 20px;
-  padding: 5px;
-  width: 60%;
-  border: 2px solid black;
-}
-
-.closed {
-  background-color: lightgrey;
+    margin: 20px;
+    padding: 5px;
+    width: 80%;
+    border: 2px solid linen;
+    border-radius: 10px;
 }
 
 .id {
-  font-size: 10.5px;
+    font-size: 0.8rem;
+}
+
+.closed {
+    background-color: #8f8f8f;
+}
+
+.open {
+    background-color: #1c5a77;
+}
+
+.closeIssue,
+.deleteIssue {
+    margin: 0 30px;
+}
+
+.inline p {
+    display: inline-block;
+}
+
+.left {
+    text-align: left;
+    margin-left: 30px;
+    color: linen;
+}
+
+.width {
+    width: 65%;
+}
+
+/* FOOTER STYLE */
+.footer {
+    margin-top: 20px;
+}
+
+a {
+    color: linen;
+}
+
+
+/* MEDIA QUERY STYLE */
+@media (max-width: 1230px) {
+    .flex {
+        justify-content: space-evenly;
+    }
+
+    .container {
+        font-size: 0.7rem;
+    }
 }
